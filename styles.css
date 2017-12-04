@@ -1,0 +1,7 @@
+.blue {
+  background-color: blue;
+}
+table, td {
+  border: 0.5px solid black;
+  padding: 2px;
+}
