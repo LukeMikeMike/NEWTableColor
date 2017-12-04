@@ -16,7 +16,7 @@ function buildTable(rows, cols){
 }
 
 
-buildTable(5,5);
+buildTable(20,20);
 colorMe();
 
 function colorMe(){
@@ -46,13 +46,15 @@ color(x,y)
 }
 
 if (key === 39){
-x += -1
+x += 1
 console.log(x,y)
+color(x,y)
 }
 
 if (key === 37){
-x += 1
+x += -1
 console.log(x,y)
+color(x,y)
 }
 
 
@@ -62,13 +64,21 @@ console.log(x,y)
 
 function color(x,y){
  var cols = document.getElementsByTagName('table')[0].rows;
- var colsq = document.querySelectorAll('tr');
- var black = document.querySelector('.blue');
-  console.log(black);
- if (black){
-   black.classList.remove('blue');
- }
-  colsq[y].classList.add('blue');
+console.log(cols);
+var blueCell = document.querySelector('.blue');
+if (blueCell){
+  blueCell.classList.remove('blue');
+}
+
+cols[y].cells[x].classList.add('blue');
+// cols[0].insertCell(-1);
+//  var colsq = document.querySelectorAll('tr');
+//  var black = document.querySelector('.blue');
+//   console.log(black);
+//  if (black){
+//    black.classList.remove('blue');
+//  }
+  // colsq[y].classList.add('blue');
   //console.log(cols);
   //console.log(colsq);
 }
