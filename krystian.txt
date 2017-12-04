@@ -1,0 +1,54 @@
+http://jsbin.com/gopuwineqe/1/edit?html,js,output
+
+
+var tableWrapper = document.getElementById('table-wrapper');
+var table = document.createElement("table");
+
+table.border = "1";
+table.id = "table";
+
+// 1 sposob 
+for (var j = 1; j <= 3; j++) {
+  var row = table.insertRow(-1);
+  for (var k = 1; k <= 3; k++) {
+    var cell = row.insertCell(-1);
+    cell.innerHTML = 'Przykladowy <br>teskt';
+  }
+}
+tableWrapper.appendChild(table);
+
+var x = 0, y = 0;
+
+moveCell(table, x, y);
+
+window.addEventListener('keydown', function(event) {
+  if (event.keyCode === 38) {
+     //strzalka gora
+    
+    y--;
+    if (y > table.rows.length) {
+      moveCell(table, x, y)
+    }
+    
+  } else if (event.keyCode === 39) {
+    x++;
+    //strzalka prawo
+    moveCell(table, x, y)
+  } else if (event.keyCode === 40) {
+    y++;
+    //strzalka dol
+    moveCell(table, x, y)
+  } else if (event.keyCode === 37) {
+    x--;
+    //strzalka lewo
+    moveCell(table, x, y)
+  }
+});
+
+function moveCell(table, x, y) {
+  var elemBlack = document.querySelector('.black');
+  if (elemBlack) {
+    elemBlack.classList.remove('black');
+  }
+  table.rows[y].cells[x].classList.add('black');
+}
