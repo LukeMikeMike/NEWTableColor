@@ -30,17 +30,19 @@ table.addEventListener('mousedown', function(event){
 document.addEventListener('keydown', function readKey(event){
 var key = event.keyCode;
 console.log(key);
-color(1,1);
+
 
 
 if (key === 38){
-y += -1
+y += -1;
+color(x,y);
 console.log(x,y)
 }
 
 if (key === 40){
 y += 1
 console.log(x,y)
+color(x,y)
 }
 
 if (key === 39){
@@ -61,9 +63,14 @@ console.log(x,y)
 function color(x,y){
  var cols = document.getElementsByTagName('table')[0].rows;
  var colsq = document.querySelectorAll('tr');
-  colsq[1].classList.add('blue');
-  console.log(cols);
-  console.log(colsq);
+ var black = document.querySelector('.blue');
+  console.log(black);
+ if (black){
+   black.classList.remove('blue');
+ }
+  colsq[y].classList.add('blue');
+  //console.log(cols);
+  //console.log(colsq);
 }
 
 
