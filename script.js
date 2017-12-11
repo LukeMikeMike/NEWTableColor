@@ -2,9 +2,23 @@ var tableDiv = document.querySelector('#tableDiv');
 var table = document.createElement('table');
 var x = 0
 var y = 0
+// var $field1 = document.querySelector('#field1');
+// var $field2 = document.querySelector('#field2');
+// var button = document.querySelector('#button1');
+var arrLen = 0;
+var arrHig = 0;
+
+// button.addEventListener('click', function(){
+//  table.innerHTML = "";
+//   arrLen = parseFloat($field1.value);
+//   arrHig = parseFloat($field2.value);
+//   buildTable(arrLen,arrHig);
+// })
 
 
 function buildTable(rows, cols){
+  arrLen = cols;
+  arrHig = rows;
   for (var i = 0; i < rows; i++){
     var row = table.insertRow(-1)
     for (var c = 0; c < cols; c++){
@@ -16,7 +30,7 @@ function buildTable(rows, cols){
 }
 
 
-buildTable(20,20);
+buildTable(10,10);
 colorMe();
 
 function colorMe(){
@@ -35,24 +49,36 @@ console.log(key);
 
 if (key === 38){
 y += -1;
+if (y < 0) {
+  y++;
+}
 color(x,y);
 console.log(x,y)
 }
 
 if (key === 40){
 y += 1
+  if (y > arrHig-1){
+    y--
+  }
 console.log(x,y)
 color(x,y)
 }
 
 if (key === 39){
 x += 1
+  if (x > arrLen-1){
+    x--
+  }
 console.log(x,y)
 color(x,y)
 }
 
 if (key === 37){
 x += -1
+if (x < 0) {
+  x++;
+}
 console.log(x,y)
 color(x,y)
 }
